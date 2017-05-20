@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app="lmsApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="booksController">
+    <div>
+      <label>Name:</label>
+      <input type="text" ng-model="yourName" placeholder="Enter a name here">
+      <hr>
+      <h1>Hello {{yourName}}!</h1>
+      
+      <p ng-repeat="book in books">{{ book.title_name }}</p>
+    </div>
+  </body>
+</html>
