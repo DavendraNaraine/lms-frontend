@@ -1,18 +1,28 @@
 <!doctype html>
 <html ng-app="lmsApp">
   <head>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/librarymanagementsystem/res/css/bootstrap.min.css">
+    <link href="/librarymanagementsystem/res/css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/librarymanagementsystem/res/js/bootstrap.min.js"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
     
     <script src="app.js"></script>
+    
+    <script src="booksCtrl.js"></script>
   </head>
-  <body ng-controller="booksController">
-    <div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
-      
-      <p ng-repeat="book in books">{{ book.title_name }}</p>
-    </div>
+  <body>
+    <a ui-sref="books">View Books</a>
+    
+    <ui-view></ui-view>
+    
+    <div class="footer">
+     <div class="container">
+       <p class="text-muted footer-text">University of Guyana - Library Management System</p>
+     </div>
+   </div>
   </body>
 </html>
