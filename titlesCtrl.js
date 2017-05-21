@@ -1,5 +1,5 @@
-app.controller('booksController', function($scope, $http) {
-		console.log("Books here");
+app.controller('titlesController', function($scope, $http) {
+		console.log("Titles here");
 	
 		$scope.addBook = function(book) {
 			$scope.books.push(book);
@@ -7,7 +7,7 @@ app.controller('booksController', function($scope, $http) {
 		
 		$scope.getBooks = function() {
 			$http({
-				"url": "/librarymanagementsystem/index.php/v1/books",
+				"url": "/librarymanagementsystem/index.php/v1/titles",
 				"method": "GET",
 			}).then(function(success_response) {
 				$scope.books = success_response.data
@@ -22,7 +22,7 @@ app.controller('booksController', function($scope, $http) {
 	
 		$scope.edit_book = function(book) {
 			$http({
-				url: "/librarymanagementsystem/index.php/v1/books/" + book.book_id,
+				url: "/librarymanagementsystem/index.php/v1/titles/" + book.book_id,
 				method: "PATCH",
 				data: {
 						ug_id: book.ug_id,
@@ -39,7 +39,7 @@ app.controller('booksController', function($scope, $http) {
 		
 		$scope.delete_book = function(book) {
 			$http({
-				url: "/librarymanagementsystem/index.php/v1/books/" + book.book_id,
+				url: "/librarymanagementsystem/index.php/v1/titles/" + book.book_id,
 				method: "DELETE",
 			}).then(function(success) {
 					console.log("Good");
@@ -52,12 +52,12 @@ app.controller('booksController', function($scope, $http) {
 		
 			$scope.add_book = function(book) {
 			$http({
-				url: "/librarymanagementsystem/index.php/v1/books/",
+				url: "/librarymanagementsystem/index.php/v1/titles/",
 				method: "POST",
 					data: {
 						title_id: book.title_id,
-						book_id: book.ug_id,
-						condition_id: book.condition_id
+						bookid: book.ug_id,
+						conditionid: book.condition_id
 				}
 			}).then(function(success) {
 					console.log("Good");
