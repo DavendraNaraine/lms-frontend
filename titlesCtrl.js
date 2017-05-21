@@ -1,16 +1,16 @@
 app.controller('titlesController', function($scope, $http) {
 		console.log("Titles here");
 	
-		$scope.addBook = function(book) {
-			$scope.books.push(book);
+		$scope.addTitle = function(title) {
+			$scope.titles.push(title);
 		}
 		
-		$scope.getBooks = function() {
+		$scope.getTitles = function() {
 			$http({
 				"url": "/librarymanagementsystem/index.php/v1/titles",
 				"method": "GET",
 			}).then(function(success_response) {
-				$scope.books = success_response.data
+				$scope.titles = success_response.data
 			}, function(error_response) {
 				console.error(error_response);
 			}).finally(function() {
@@ -18,53 +18,43 @@ app.controller('titlesController', function($scope, $http) {
 			})
 		}
 		
-		$scope.getBooks();
+		$scope.getTitles();
 	
-		$scope.edit_book = function(book) {
+		$scope.edit_title = function(title) {
 			$http({
-				url: "/librarymanagementsystem/index.php/v1/titles/" + book.book_id,
+				url: "/librarymanagementsystem/index.php/v1/titles/" + title.title_id,
 				method: "PATCH",
 				data: {
-						ug_id: book.ug_id,
-						condition_id: book.condition_id
+						title_name: title.title_name,
+						title_author: title.title_author,
+						title_coauthor: title.title_coauthor,
+						title_edition: title.title_edition,
+						title_publisher: title.title_publisher,
+						title_isbn: title.title_isbn
+						
 				}
 			}).then(function(success) {
 					console.log("Good");
 			}, function(error) {
 					console.error("Bad");
 			}).finally(function() {
-					$scope.getBooks();
+					$scope.getTitles();
 			})
 		}
 		
-		$scope.delete_book = function(book) {
-			$http({
-				url: "/librarymanagementsystem/index.php/v1/titles/" + book.book_id,
-				method: "DELETE",
-			}).then(function(success) {
-					console.log("Good");
-			}, function(error) {
-					console.error("Bad");
-			}).finally(function() {
-					$scope.getBooks();
-			})
-		}
-		
-			$scope.add_book = function(book) {
+			$scope.add_title = function(title) {
 			$http({
 				url: "/librarymanagementsystem/index.php/v1/titles/",
 				method: "POST",
 					data: {
-						title_id: book.title_id,
-						bookid: book.ug_id,
-						conditionid: book.condition_id
+						
 				}
 			}).then(function(success) {
 					console.log("Good");
 			}, function(error) {
 					console.error("Bad");
 			}).finally(function() {
-					$scope.getBooks();
+					$scope.getTitles();
 			})
 		}
   });
