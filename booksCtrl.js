@@ -36,4 +36,17 @@ app.controller('booksController', function($scope, $http) {
 					$scope.getBooks();
 			})
 		}
+		
+		$scope.delete_book = function(book) {
+			$http({
+				url: "/librarymanagementsystem/index.php/v1/books/" + book.book_id,
+				method: "DELETE",
+			}).then(function(success) {
+					console.log("Good");
+			}, function(error) {
+					console.error("Bad");
+			}).finally(function() {
+					$scope.getBooks();
+			})
+		}
   });
