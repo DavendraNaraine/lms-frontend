@@ -44,9 +44,15 @@ app.controller('titlesController', function($scope, $http) {
 		
 			$scope.add_title = function(title) {
 			$http({
-				url: "/librarymanagementsystem/index.php/v1/titles/",
+				url: "/librarymanagementsystem/index.php/v1/titles",
 				method: "POST",
 					data: {
+						title_name: title.title_name,
+						title_author: title.title_author,
+						title_coauthor: title.title_coauthor,
+						title_edition: title.title_edition,
+						title_publisher: title.title_publisher,
+						title_isbn: title.title_isbn
 						
 				}
 			}).then(function(success) {

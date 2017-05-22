@@ -52,11 +52,11 @@ app.controller('booksController', function($scope, $http) {
 		
 			$scope.add_book = function(book) {
 			$http({
-				url: "/librarymanagementsystem/index.php/v1/books/",
+				url: "/librarymanagementsystem/index.php/v1/books",
 				method: "POST",
 					data: {
 						title_id: book.title_id,
-						book_id: book.ug_id,
+						ug_id: book.ug_id,
 						condition_id: book.condition_id
 				}
 			}).then(function(success) {
