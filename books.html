@@ -7,6 +7,18 @@
 		<li class="">Return Book</li>
 	</ol>
 
+	<div class="search-form text-center col-sm-6 col-sm-offset-6">
+		<form>
+			<div class="input-group">
+				<input type="text" ng-model="searchKeyword" class="form-control" placeholder="Search book via keyword">
+				<span class="input-group-btn">
+        <a><button class="btn btn-default" ng-click="" type="button">Search</button></a>
+      </span>
+			</div>
+			<!-- /input-group -->
+		</form>
+	</div>
+
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -19,7 +31,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="book in books">
+			<tr ng-repeat="book in books  | filter: searchKeyword">
 				<th scope="row">{{ $index + 1 }}</th>
 				<td><input type="text" ng-model="book.title_name" ng-disabled="true"></td>
 				<td><input type="text" ng-model="book.ug_id"></td>
