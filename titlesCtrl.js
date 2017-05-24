@@ -7,7 +7,7 @@ app.controller('titlesController', function($scope, $http) {
 		
 		$scope.getTitles = function() {
 			$http({
-				"url": "/librarymanagementsystem/index.php/v1/titles",
+				"url": "/lms-backend/index.php/v1/titles",
 				"method": "GET",
 			}).then(function(success_response) {
 				$scope.titles = success_response.data
@@ -22,7 +22,7 @@ app.controller('titlesController', function($scope, $http) {
 	
 		$scope.edit_title = function(title) {
 			$http({
-				url: "/librarymanagementsystem/index.php/v1/titles/" + title.title_id,
+				url: "/lms-backend/index.php/v1/titles/" + title.title_id,
 				method: "PATCH",
 				data: {
 						title_name: title.title_name,
@@ -44,7 +44,7 @@ app.controller('titlesController', function($scope, $http) {
 		
 			$scope.add_title = function(title) {
 			$http({
-				url: "/librarymanagementsystem/index.php/v1/titles",
+				url: "/lms-backend/index.php/v1/titles",
 				method: "POST",
 					data: {
 						title_name: title.title_name,
