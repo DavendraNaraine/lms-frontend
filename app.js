@@ -21,7 +21,15 @@ var app = angular.module('lmsApp', ['ui.router'])
 		controller: "usersController"
 	}
 
+	var subjectState = {
+		name: 'subjects',
+		url: '/subjects',
+		templateUrl: 'subjects.html',
+		controller: "subjectsController"
+	}
+
 	$stateProvider.state(bookState);
 	$stateProvider.state(titleState);
 	$stateProvider.state(userState);
+	$stateProvider.state(subjectState);
 });
