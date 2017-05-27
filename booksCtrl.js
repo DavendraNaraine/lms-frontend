@@ -18,9 +18,22 @@ app.controller('booksController', function($scope, $http) {
 		})
 	}
 
+	$scope.getTitles = function() {
+		$http({
+			"url": "/lms-backend/index.php/v1/titles",
+			"method": "GET",
+		}).then(function(success_response) {
+			$scope.titles = success_response.data
+		}, function(error_response) {
+			console.error(error_response);
+		}).finally(function() {
+			console.log("Done");
+		})
+	}
+
 	$scope.getBooks();
-
-
+	$scope.getTitles();
+	
 	$scope.edit_book = function(book) {
 		$http({
 			url: "/lms-backend/index.php/v1/books/" + book.book_id,
@@ -68,27 +81,27 @@ app.controller('booksController', function($scope, $http) {
 			$scope.getBooks();
 		})
 	}
-	
-	
-	$scope.search_book = function(book) {
-			$http({
-				url: "/lms-backend/index.php/v1/books/search",
-				method: "POST",
-					data: {
-						ug_id: book.ug_id,
-						book_id: book.book_id,
-				}
-			}).then(function(success) {
-					console.log("Good");
-			}, function(error) {
-					console.error("Bad");
-			}).finally(function() {
-					$scope.getBooks();
 
-			})
-		}
-	
-		
+
+	$scope.search_book = function(book) {
+		$http({
+			url: "/lms-backend/index.php/v1/books/search",
+			method: "POST",
+			data: {
+				ug_id: book.ug_id,
+				book_id: book.book_id,
+			}
+		}).then(function(success) {
+			console.log("Good");
+		}, function(error) {
+			console.error("Bad");
+		}).finally(function() {
+			$scope.getBooks();
+
+		})
+	}
+
+
 	$scope.getBook = function(book) {
 		$http({
 			"url": "/lms-backend/index.php/v1/books/" + book.book_id,

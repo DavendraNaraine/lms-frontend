@@ -94,9 +94,9 @@
 					
 				<div class="form-group">
 						<label class="control-label col-sm-2" for="">Title Subject</label>
-						<div class="col-sm-10" ng-controller="subjectsController">
-							<select type="number" ng-model="title_subject_id" class="form-control">
-								  <option ng-repeat="subject in subjects | orderBy:'subject_name'" value="subject.subject_id">{{subject.subject_name}}</option>
+						<div class="col-sm-10">
+							<select type="number" ng-model="title.subject_id" class="form-control">
+								  <option ng-repeat="subject in subjects | orderBy:'subject_name'" value={{subject.subject_id}}>{{subject.subject_name}}</option>
 							</select>
 
 						</div>
