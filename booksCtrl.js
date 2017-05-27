@@ -33,7 +33,7 @@ app.controller('booksController', function($scope, $http) {
 
 	$scope.getBooks();
 	$scope.getTitles();
-	
+
 	$scope.edit_book = function(book) {
 		$http({
 			url: "/lms-backend/index.php/v1/books/" + book.book_id,
@@ -72,6 +72,26 @@ app.controller('booksController', function($scope, $http) {
 				title_id: book.title_id,
 				ug_id: book.ug_id,
 				condition_id: book.condition_id
+			}
+		}).then(function(success) {
+			console.log("Good");
+		}, function(error) {
+			console.error("Bad");
+		}).finally(function() {
+			$scope.getBooks();
+		})
+	}
+
+	$scope.borrow_book = function(book) {
+		$http({
+			url: "/lms-backend/index.php/v1/books/borrow",
+			method: "POST",
+			data: {
+				book_id: book.book_id,
+				student_usi: book.student_usi,
+				borrowed_date: book.borrowed_date,
+				borrowed_condition_id: book.condition_id,
+				return_date: book.return_date
 			}
 		}).then(function(success) {
 			console.log("Good");
