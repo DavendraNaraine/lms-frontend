@@ -57,10 +57,11 @@ app.controller('usersController', function($scope, $http) {
             url: "/lms-backend/index.php/v1/users",
             method: "POST",
             data: {
+                username: user.username,
                 first_name: user.first_name,
                 last_name: user.last_name,
-                username: user.username,
                 password: user.password,
+                student_usi: user.student_usi,
                 role: user.role
             }
         }).then(function(success) {
