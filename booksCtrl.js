@@ -17,6 +17,19 @@ app.controller('booksController', function($scope, $http) {
 			console.log("Done");
 		})
 	}
+	
+// 	$scope.getReturnBooks = function() {
+// 		$http({
+// 			"url": "/lms-backend/index.php/v1/books/return",
+// 			"method": "GET",
+// 		}).then(function(success_response) {
+// 			$scope.books = success_response.data
+// 		}, function(error_response) {
+// 			console.error(error_response);
+// 		}).finally(function() {
+// 			console.log("Done loading returns");
+// 		})
+// 	}
 
 	$scope.getTitles = function() {
 		$http({
@@ -33,6 +46,7 @@ app.controller('booksController', function($scope, $http) {
 
 	$scope.getBooks();
 	$scope.getTitles();
+// 	$scope.getReturnBooks();
 
 	$scope.edit_book = function(book) {
 		$http({

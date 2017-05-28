@@ -28,8 +28,17 @@ var app = angular.module('lmsApp', ['ui.router'])
 		controller: "subjectsController"
 	}
 
+	var returnState = {
+		name: 'returns',
+		url: '/returns',
+		templateUrl: 'returns.html',
+		controller: "returnsController"
+	}
+
 	$stateProvider.state(bookState);
 	$stateProvider.state(titleState);
 	$stateProvider.state(userState);
 	$stateProvider.state(subjectState);
+	$stateProvider.state(returnState);
+
 });
