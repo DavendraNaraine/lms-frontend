@@ -18,11 +18,12 @@
 
 	<table class="table table-hover">
 		<thead>
-			<tr>
+			<tr style="background:white;">
 				<th>#</th>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Username</th>
+				<!--<th>Role ID</th>-->
 				<th>Role</th>
 				<th> </th>
 			</tr>
@@ -34,7 +35,8 @@
 				<td><input type="text" ng-model="user.first_name"></td>
 				<td><input type="text" ng-model="user.last_name"></td>
 				<td><input type="text" ng-model="user.username"  ng-disabled="true"></td>
-				<td><input type="text" ng-model="user.role"></td>
+				<!--<td><input type="text" ng-model="user.role" ng-disabled="true"></td>-->
+				<td><input type="text" ng-model="user.role_type" ng-disabled="true"></td>
 				<td>
 					<button ng-click="edit_user(user)" type="button" class="btn btn-success" aria-label="Left Align">
 						Edit <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -61,18 +63,20 @@
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Username</th>
+				<th>Role ID</th>
 				<th>Role</th>
 				<th> </th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="user in users  | filter: { user.active: '0' }">
+			<tr ng-repeat="user in users">
 				<!-- Dynamic content will have to go here-->
 				<th scope="row">{{ $index + 1 }}</th>
 				<td><input type="text" ng-model="user.first_name"></td>
 				<td><input type="text" ng-model="user.last_name"></td>
 				<td><input type="text" ng-model="user.username"  ng-disabled="true"></td>
 				<td><input type="text" ng-model="user.role"></td>
+				<td><input type="text" ng-model="user.role_type"></td>
 				<td>
 					<button ng-click="edit_user(user)" type="button" class="btn btn-success" aria-label="Left Align">
 						Edit <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
